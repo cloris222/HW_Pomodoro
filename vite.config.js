@@ -129,20 +129,17 @@ export default defineConfig({
       }
     })
   ],
+  build: {
+    loaders: {
+      sass: ['vue-style-loader', 'css-loader', 'sass-loader']
+    }
+  },
   define: { 'process.env': {} },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
-    extensions: [
-      '.js',
-      '.json',
-      '.jsx',
-      '.mjs',
-      '.ts',
-      '.tsx',
-      '.vue'
-    ]
+    extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue']
   },
   server: {
     port: 3000
