@@ -15,6 +15,7 @@ v-app
         keep-alive(include="HomeView")
           //- 動態元件，將元件以 is 傳入
           component(:is="Component")
+      img(src="@/assets/pomotoro-active.png" class="tomato-active")
 </template>
 
 <script setup>
