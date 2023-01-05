@@ -1,12 +1,31 @@
 <template lang="pug">
 v-app
-  v-app-bar
-    v-app-bar-title 番茄鐘
-    v-spacer
-    v-btn(icon="mdi-home" variant="text" to="/")
-    v-btn(icon="mdi-format-list-bulleted" variant="text" to="/list")
-    v-btn(icon="mdi-cog" variant="text" to="/settings")
-    v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
+  v-card
+    v-navigation-drawer( expand-on-hover, permanent)
+      v-list
+        v-list-item
+          v-list-item-content
+            v-list-item-title.text-h6 番茄鐘
+      v-divider
+      v-list
+          v-list-item
+            v-btn(icon="mdi-home" variant="text" to="/" )
+            v-list-item-title Home
+          v-list-item
+            v-btn(icon="mdi-format-list-bulleted" variant="text" to="/list")
+            v-list-item-title List
+          v-list-item
+            v-btn(icon="mdi-cog" variant="text" to="/settings")
+            v-list-item-title Settings
+          v-list-item
+            v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
+  //- v-app-bar
+  //-   v-app-bar-title 番茄鐘
+  //-   v-spacer
+  //-   v-btn(icon="mdi-home" variant="text" to="/")
+  //-   v-btn(icon="mdi-format-list-bulleted" variant="text" to="/list")
+  //-   v-btn(icon="mdi-cog" variant="text" to="/settings")
+  //-   v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
   v-main
     v-container
       router-view(v-slot="{ Component }")
