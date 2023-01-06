@@ -1,11 +1,11 @@
 <template lang="pug">
 v-app
   v-card
-    v-navigation-drawer( expand-on-hover rail permanent width="200" :rail-width="70")
+    v-navigation-drawer(ref="drawer" expand-on-hover rail permanent width="200" :rail-width="70" )
       v-list
         v-list-item
           v-list-item-content
-            v-list-item-title.text-h6 番茄鐘
+              v-list-item-title.text-h6 番茄鐘
       v-divider
       v-list
           v-list-item
@@ -35,9 +35,24 @@ v-app
 </template>
 
 <script setup>
+// import { computed, ref, onMounted } from 'vue'
 import { useSettingsStore } from '@/stores/settings'
 import { storeToRefs } from 'pinia'
 const settings = useSettingsStore()
 const { notify } = storeToRefs(settings)
 const { toggleNotify } = settings
+
+// const drawer = ref(null)
+// let drawerwidth = 0
+// const updateDrawerWidth = () => {
+//   drawerwidth = drawer.value.offsetWidth
+// }
+// const drawerchange = computed(() => {
+//   return drawerwidth === 70
+// })
+
+// console.log(drawerchange)
+
+// onMounted(updateDrawerWidth)
+
 </script>
