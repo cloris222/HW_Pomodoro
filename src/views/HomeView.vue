@@ -7,10 +7,12 @@ v-row#home
     v-btn.homeicon(v-if="status !== 1" icon="mdi-play" variant="text" @click="startTimer")
     v-btn.homeicon(v-if="status === 1" icon="mdi-pause" variant="text" @click="pauseTimer")
     v-btn.homeicon(v-if="currentItem.length > 0" icon="mdi-skip-next" variant="text" @click="finishTimer")
+  v-col(cols="12")
+    img(ref="tomato" :src="tomatosrc" class="tomato-active")
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useListStore } from '@/stores/list'
 import { useSettingsStore } from '@/stores/settings'
 import { storeToRefs } from 'pinia'
@@ -21,6 +23,8 @@ const { start, countdown, finish } = list
 
 const settings = useSettingsStore()
 const { selectedAlarmFile, notify } = storeToRefs(settings)
+
+const tomatosrc = ref('@/assets/pomodoro-active.png')
 
 // 0 = 停止
 // 1 = 倒數中
@@ -41,6 +45,7 @@ const startTimer = () => {
       }
     }, 1000)
   }
+  tomatosrc.value = '@/assets/pomodoro-active.png'
 }
 const pauseTimer = () => {
   status.value = 2
@@ -52,6 +57,7 @@ const finishTimer = () => {
   const audio = new Audio()
   audio.src = selectedAlarmFile.value
   audio.play()
+  tomatosrc.value = '@/assets/pomodoro-rest2.png'
   if (notify.value) {
     // eslint-disable-next-line
     const notification = new Notification('事項完成', {

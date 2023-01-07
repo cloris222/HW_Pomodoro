@@ -13,16 +13,12 @@
 }
 .v-main{
   background:#2C3E2C;
-
-  .tomato-active{
-    position: absolute;
-    bottom:0%;
-    right: 0;
-  }    
 }
 
 // HomeView.vue
 #home{
+  width: 100%;
+  height: 100%;
   margin-top: 200px;
   margin-left: 200px;
   color:#D7C4BB ;
@@ -31,14 +27,23 @@
     }
     .hometime{
       font-size: 100px;
+      margin-left: -5px;
     }
     .homeicon{
       width: 50px;
       height: 50px;
       text-align: center;
       line-height: 50px;
-      background-color:#D7C4BB ;
+      border: 3px solid #D7C4BB;
+      background: transparent;
       font-size: 25px;
-      color:#2C3E2C ;
+      color:#D7C4BB ;
+      margin-right: 1rem;
     }
+
+    .tomato-active{
+      position: absolute;
+      bottom:0%;
+      right: 0;
+    }    
 }

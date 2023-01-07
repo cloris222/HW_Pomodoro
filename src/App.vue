@@ -24,14 +24,13 @@ v-app
   //-   v-btn(icon="mdi-cog" variant="text" to="/settings")
   //-   v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
   v-main
-    v-container
+    v-container(fluid fill-height)
       router-view(v-slot="{ Component }")
         //- 換頁保留元件不被銷毀
         //- 設定 include 指定要保留的元件
         keep-alive(include="HomeView")
           //- 動態元件，將元件以 is 傳入
           component(:is="Component")
-      img(src="@/assets/pomotoro-active.png" class="tomato-active")
 </template>
 
 <script setup>
