@@ -11,7 +11,9 @@ v-row#list.mt-8
       v-card-text.font-weight-bold 這裡還沒有事項喔，快去新增一個試試吧！
     v-card(v-for="item in items" v-else :key="item.id" ref="editInputs")
       v-text-field(v-if="item.edit" v-model="item.model" variant="outline" autofocus :rules="[rules.required, rules.length]")
-      v-card-title.font-weight-black(v-else) {{ item.name }}
+      v-card-title.d-flex.justify-space-between(v-else)
+        span.font-weight-black {{ item.name }}
+        span.font-weight-bold {{ date }}
       v-divider(color="#2C3E2C")
       span(v-if="item.edit")
         v-btn(icon="mdi-check" variant="text" color="green" @click="confirmEditItem(item.id)")
@@ -58,6 +60,7 @@ v-row#list.mt-8
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useListStore } from '@/stores/list'
+import moment from 'moment'
 
 const list = useListStore()
 const { addItem, editItem, delItem, confirmEditItem, undoEditItem, delFinishedItem } = list
@@ -66,6 +69,7 @@ const { items, finishedItems } = storeToRefs(list)
 const newItem = ref('')
 const input = ref(null)
 const editInputs = ref([])
+const date = moment().format('LLL')
 
 const rules = {
   required (v) {
