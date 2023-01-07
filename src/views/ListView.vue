@@ -1,34 +1,38 @@
 <template lang="pug">
-v-row#list
-  v-col(cols="12")
-    h1.text-center 待辦事項
-  v-col(cols="12")
+v-row#list.mt-8
+  v-col(cols="5").mx-auto
+    h1.text-center.mb-4 待辦事項
     v-text-field(ref="input" v-model="newItem" label="新增事項" :rules="[rules.required, rules.length]" @keydown.enter="onInputSubmit")
       template(#append)
-        v-btn(icon="mdi-plus" variant="text" @click="onInputSubmit")
+        v-btn(icon="mdi-plus" variant="text" class="plusicon" @click="onInputSubmit")
+    v-card(v-if="items.length === 0")
+      v-card-title.font-weight-black 沒有事項
+      v-divider(color="#2C3E2C")
+      v-card-text.font-weight-bold 這裡還沒有事項喔，快去新增一個試試吧！
+    v-card(v-for="item in items" v-else :key="item.id" ref="editInputs")
+      v-text-field(v-if="item.edit" v-model="item.model" autofocus :rules="[rules.required, rules.length]")
+      v-card-title(v-else) {{ item.name }}
     v-table
-      thead
-        tr
-          th 名稱
-          th 操作
-      tbody
-        tr(v-if="items.length === 0")
-          td.text-center(colspan="2") 沒有事項
-        tr(v-for="item in items" v-else :key="item.id" ref="editInputs")
-          td
-            v-text-field(v-if="item.edit" v-model="item.model" autofocus :rules="[rules.required, rules.length]")
-            span(v-else) {{ item.name }}
-          td
-            span(v-if="item.edit")
-              v-btn(icon="mdi-check" variant="text" color="green" @click="confirmEditItem(item.id)")
-              v-btn(icon="mdi-undo" variant="text" color="red" @click="undoEditItem(item.id)")
-            span(v-else)
-              v-btn(icon="mdi-pencil" variant="text" color="green" @click="editItem(item.id)")
-              v-btn(icon="mdi-delete" variant="text" color="red" @click="delItem(item.id)")
-  v-divider
-  v-col(cols="12")
-    h1.text-center 已完成事項
-  v-col(cols="12")
+      //- thead
+      //-   tr
+      //-     th 名稱
+      //-     th 操作
+      //- tbody
+      //-   tr(v-if="items.length === 0")
+      //-     td.text-center(colspan="2") 沒有事項
+      //-   tr(v-for="item in items" v-else :key="item.id" ref="editInputs")
+      //-     td
+      //-       v-text-field(v-if="item.edit" v-model="item.model" autofocus :rules="[rules.required, rules.length]")
+      //-       span(v-else) {{ item.name }}
+      //-     td
+      //-       span(v-if="item.edit")
+      //-         v-btn(icon="mdi-check" variant="text" color="green" @click="confirmEditItem(item.id)")
+      //-         v-btn(icon="mdi-undo" variant="text" color="red" @click="undoEditItem(item.id)")
+      //-       span(v-else)
+      //-         v-btn(icon="mdi-pencil" variant="text" color="green" @click="editItem(item.id)")
+      //-         v-btn(icon="mdi-delete" variant="text" color="red" @click="delItem(item.id)")
+  v-col(cols="5").mx-auto.mt-8
+    h1.text-center.mb-4 已完成事項
     v-table
       thead
         tr
