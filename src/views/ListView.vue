@@ -10,9 +10,16 @@ v-row#list.mt-8
       v-divider(color="#2C3E2C")
       v-card-text.font-weight-bold 這裡還沒有事項喔，快去新增一個試試吧！
     v-card(v-for="item in items" v-else :key="item.id" ref="editInputs")
-      v-text-field(v-if="item.edit" v-model="item.model" autofocus :rules="[rules.required, rules.length]")
-      v-card-title(v-else) {{ item.name }}
-    v-table
+      v-text-field(v-if="item.edit" v-model="item.model" variant="outline" autofocus :rules="[rules.required, rules.length]")
+      v-card-title.font-weight-black(v-else) {{ item.name }}
+      v-divider(color="#2C3E2C")
+      span(v-if="item.edit")
+        v-btn(icon="mdi-check" variant="text" color="green" @click="confirmEditItem(item.id)")
+        v-btn(icon="mdi-undo" variant="text" color="red" @click="undoEditItem(item.id)")
+      span(v-else)
+        v-btn(icon="mdi-pencil" variant="text" color="green" @click="editItem(item.id)")
+        v-btn(icon="mdi-delete" variant="text" color="red" @click="delItem(item.id)")
+    //- v-table
       //- thead
       //-   tr
       //-     th 名稱
@@ -31,7 +38,7 @@ v-row#list.mt-8
       //-       span(v-else)
       //-         v-btn(icon="mdi-pencil" variant="text" color="green" @click="editItem(item.id)")
       //-         v-btn(icon="mdi-delete" variant="text" color="red" @click="delItem(item.id)")
-  v-col(cols="5").mx-auto.mt-8
+  v-col(cols="5").mx-auto.mt-10
     h1.text-center.mb-4 已完成事項
     v-table
       thead
