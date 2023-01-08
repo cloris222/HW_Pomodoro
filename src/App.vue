@@ -53,7 +53,7 @@ v-app
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+// import { computed, ref, onMounted } from 'vue'
 import { useSettingsStore } from '@/stores/settings'
 import { storeToRefs } from 'pinia'
 const settings = useSettingsStore()
@@ -61,15 +61,15 @@ const { notify } = storeToRefs(settings)
 const { toggleNotify } = settings
 
 // await nextTick()
-const drawer = ref(null)
-let drawerwidth = 0
+// const drawer = ref(null)
+// let drawerwidth = 0
 
-const updateDrawerWidth = computed(() => {
-  drawerwidth = drawer.value.offsetwidth
-  console.log(drawerwidth)
-  return drawerwidth
-})
+// const updateDrawerWidth = computed(() => {
+//   drawerwidth = drawer.value.offsetwidth
+//   console.log(drawerwidth)
+//   return drawerwidth
+// })
 
-onMounted(updateDrawerWidth)
+// onMounted(updateDrawerWidth)
 
 </script>
