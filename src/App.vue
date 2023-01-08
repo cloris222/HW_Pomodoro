@@ -9,13 +9,31 @@ v-app
       v-divider
       v-list
           v-list-item
-            v-btn(icon="mdi-home" variant="text" to="/" )
+            v-row.d-flex.justify-center.align-center
+              v-col
+                v-btn(icon="mdi-home" variant="text" to="/" )
+              v-col.col-text.font-weight-bold
+                span 回到首頁
           v-list-item
-            v-btn(icon="mdi-format-list-bulleted" variant="text" to="/list")
+            v-row.d-flex.justify-center.align-center
+                v-col
+                  v-btn(icon="mdi-format-list-bulleted" variant="text" to="/list")
+                v-col.col-text.font-weight-bold
+                  span 待辦清單
           v-list-item
-            v-btn(icon="mdi-cog" variant="text" to="/settings")
+            v-row.d-flex.justify-center.align-center
+                  v-col
+                    v-btn(icon="mdi-cog" variant="text" to="/settings")
+                  v-col.col-text.font-weight-bold
+                    span 設定
           v-list-item
-            v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
+            v-row.d-flex.justify-center.align-center
+                    v-col
+                      v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
+                    v-col.col-text.font-weight-bold
+                      span(v-if="notify") 關閉通知
+                      span(v-else) 開啟通知
+
   //- v-app-bar
   //-   v-app-bar-title 番茄鐘
   //-   v-spacer

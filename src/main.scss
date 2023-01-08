@@ -12,7 +12,6 @@ $secondarycolor:#2C3E2C;
 
 
 
-
 // APP.vue
 .v-navigation-drawer{
   background-color:$primarycolor;
@@ -24,6 +23,12 @@ $secondarycolor:#2C3E2C;
 
     .v-list-item-title{
       font-weight: 900;
+    }
+
+    .col-text{
+      padding-left: 0;
+      width: 104px;
+      margin-left: -15px
     }
   }  
 }
@@ -101,6 +106,33 @@ $secondarycolor:#2C3E2C;
       color:$secondarycolor ;
       transform: scale(1.2);
     }
-  }
+  }   
+}
+
+// SettingsView.vue
+#settings{
+  width: 80%;
+  margin: auto;
+  color:$primarycolor ;
+  .settingsTable{
+    background:$primarycolor ;
+    color:$secondarycolor ;
+    cursor: pointer;
     
+    tr{
+      border: 1px solid $secondarycolor !important;
+      &:hover{
+        background:darken($primarycolor,10%) ;
+        color:lighten($secondarycolor,10%) ;
+      }
+    }
+
+    .firstLine{
+      font-size: 18px;
+    }
+    .alarmLine{
+      font-size: 16px;
+    }
+    
+  }
 }
