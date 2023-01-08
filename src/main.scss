@@ -7,6 +7,7 @@
 }
 
 
+
 $primarycolor:#D7C4BB;
 $secondarycolor:#2C3E2C;
 
@@ -20,6 +21,10 @@ $secondarycolor:#2C3E2C;
 
   .v-list-item{
     display: flex;
+    &:hover{
+      background:darken($primarycolor ,10%);
+      color:lighten($secondarycolor,10%)
+    }
 
     .v-list-item-title{
       font-weight: 900;
@@ -31,6 +36,11 @@ $secondarycolor:#2C3E2C;
       margin-left: -15px
     }
   }  
+
+  .router-link{
+    text-decoration: none;
+    color:$secondarycolor ;
+  }
 }
 .v-main{
   background:$secondarycolor;
