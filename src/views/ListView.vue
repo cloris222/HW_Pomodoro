@@ -1,7 +1,8 @@
 <template lang="pug">
-v-row#list.mt-8
-  v-col(cols="5").mx-auto
+v-row#list.mt-8.ml-150
+  v-col(cols="5")
     h1.text-center.mb-4 待辦事項
+    v-divider.mb-8(color="#D7C4BB")
     v-text-field(ref="input" v-model="newItem" label="新增事項" :rules="[rules.required, rules.length]" @keydown.enter="onInputSubmit")
       template(#append)
         v-btn(icon="mdi-plus" variant="text" class="plusicon" @click="onInputSubmit")
@@ -45,18 +46,32 @@ v-row#list.mt-8
       //-         v-btn(icon="mdi-delete" variant="text" color="red" @click="delItem(item.id)")
   v-col(cols="5").mx-auto
     h1.text-center.mb-4 已完成事項
-    v-table
-      thead
-        tr
-          th 名稱
-          th 操作
-      tbody
-        tr(v-if="finishedItems.length === 0")
-          td.text-center(colspan="2") 沒有事項
-        tr(v-for="item in finishedItems" v-else :key="item.id" ref="editInputs")
-          td {{ item.name }}
-          td
-            v-btn(icon="mdi-delete" variant="text" color="red" @click="delFinishedItem(item.id)")
+    v-divider.mb-8(color="#D7C4BB")
+    v-card(v-if="finishedItems.length === 0")
+      v-card-title.font-weight-black 沒有事項
+      v-divider(color="#2C3E2C")
+      v-card-text.font-weight-bold 這裡還沒有事項喔，快去新增一個試試吧！
+    v-card(v-for="item in finishedItems" v-else :key="item.id" ref="editInputs")
+      v-card-title.font-weight-black {{ item.name }}
+      v-row.d-flex.justify-space-between
+        v-col
+          v-card-subtitle
+            span.font-weight-bold {{ date }}
+        v-col.delicon.text-center
+          v-btn(icon="mdi-delete" variant="text" color="red" @click="delFinishedItem(item.id)")
+
+    //- v-table
+    //-   thead
+    //-     tr
+    //-       th 名稱
+    //-       th 操作
+    //-   tbody
+    //-     tr(v-if="finishedItems.length === 0")
+    //-       td.text-center(colspan="2") 沒有事項
+    //-     tr(v-for="item in finishedItems" v-else :key="item.id" ref="editInputs")
+    //-       td {{ item.name }}
+    //-       td
+    //-         v-btn(icon="mdi-delete" variant="text" color="red" @click="delFinishedItem(item.id)")
 </template>
 
 <script setup>
