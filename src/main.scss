@@ -107,7 +107,6 @@ $secondarycolor:#2C3E2C;
     height:30px;
     text-align: center;
     line-height:30px;
-    // border: 3px solid $primarycolor;
     background: transparent;
     font-size: 14px;
     color:$primarycolor ;
@@ -116,7 +115,7 @@ $secondarycolor:#2C3E2C;
       color:$secondarycolor ;
       transform: scale(1.2);
     }
-  }   
+  } 
 }
 
 // SettingsView.vue

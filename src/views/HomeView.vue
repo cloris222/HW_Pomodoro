@@ -58,7 +58,7 @@ const finishTimer = () => {
     // eslint-disable-next-line
     const notification = new Notification('事項完成', {
       body: currentText.value,
-      icon: 'https://github.com/wdaweb.png'
+      icon: '../assets/pomodoro-rest2.png'
     })
   }
   finish()
