@@ -1,39 +1,16 @@
 <template lang="pug">
 v-app
   v-card
-    v-navigation-drawer(ref="drawer" expand-on-hover rail permanent width="200" :rail-width="70" )
+    v-navigation-drawer(ref="drawer" expand-on-hover rail permanent width="200" rail-width="70" )
       v-list
-        v-list-item
-          v-list-item-content
-              v-list-item-title.text-h6
-                router-link(to="/").router-link 番茄鐘
+        v-list-item(to="/")
+              v-list-item-title.text-h6 番茄鐘
       v-divider
       v-list
-          v-list-item
-            v-row.d-flex.justify-center.align-center
-                  v-col
-                    v-btn(icon="mdi-home" variant="text" to="/")
-                  v-col.col-text.font-weight-bold
-                    router-link(to="/").router-link 回到首頁
-          v-list-item
-            v-row.d-flex.justify-center.align-center
-                v-col
-                  v-btn(icon="mdi-format-list-bulleted" variant="text" to="/list")
-                v-col.col-text.font-weight-bold
-                  router-link(to="/list").router-link 待辦清單
-          v-list-item
-            v-row.d-flex.justify-center.align-center
-                  v-col
-                    v-btn(icon="mdi-cog" variant="text" to="/settings")
-                  v-col.col-text.font-weight-bold
-                    router-link(to="/settings").router-link 設定
-          v-list-item
-            v-row.d-flex.justify-center.align-center
-                    v-col
-                      v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
-                    v-col.col-text.font-weight-bold
-                      span(v-if="notify" @click="toggleNotify") 關閉通知
-                      span(v-else @click="toggleNotify") 開啟通知
+        v-list-item( prepend-icon="mdi-home" title="回到首頁" to="/")
+        v-list-item( prepend-icon="mdi-format-list-bulleted" title="待辦清單" to="/list")
+        v-list-item( prepend-icon="mdi-cog" title="設定" to="/settings")
+        v-list-item( :prepend-icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" :title="notify ?'關閉通知':'開啟通知'" @click="toggleNotify")
 
   //- v-app-bar
   //-   v-app-bar-title 番茄鐘
@@ -53,21 +30,21 @@ v-app
 </template>
 
 <script setup>
-// import { computed, ref, onMounted } from 'vue'
+// import { computed, ref, onMounted, nextTick } from 'vue'
 import { useSettingsStore } from '@/stores/settings'
 import { storeToRefs } from 'pinia'
+
 const settings = useSettingsStore()
 const { notify } = storeToRefs(settings)
 const { toggleNotify } = settings
 
-// await nextTick()
 // const drawer = ref(null)
 // let drawerwidth = 0
 
 // const updateDrawerWidth = computed(() => {
-//   drawerwidth = drawer.value.offsetwidth
+//   drawerwidth = drawer.value.offsetWidth
 //   console.log(drawerwidth)
-//   return drawerwidth
+//   return drawerwidth === 70
 // })
 
 // onMounted(updateDrawerWidth)

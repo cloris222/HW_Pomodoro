@@ -28,19 +28,9 @@ $secondarycolor:#2C3E2C;
 
     .v-list-item-title{
       font-weight: 900;
-    }
-
-    .col-text{
-      padding-left: 0;
-      width: 104px;
-      margin-left: -15px
-    }
+    } 
   }  
 
-  .router-link{
-    text-decoration: none;
-    color:$secondarycolor ;
-  }
 }
 .v-main{
   background:$secondarycolor;

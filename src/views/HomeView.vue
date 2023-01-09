@@ -8,7 +8,7 @@ v-row#home
     v-btn.homeicon(v-if="status === 1" icon="mdi-pause" variant="text" @click="pauseTimer")
     v-btn.homeicon(v-if="currentItem.length > 0" icon="mdi-skip-next" variant="text" @click="finishTimer")
   v-col(cols="12")
-    img(ref="tomato" src="@/assets/pomodoro-active.png" class="tomato-active")
+    img.tomato-active(ref="tomato" src="@/assets/pomodoro-active.png")
 </template>
 
 <script setup>
@@ -58,7 +58,7 @@ const finishTimer = () => {
     // eslint-disable-next-line
     const notification = new Notification('事項完成', {
       body: currentText.value,
-      icon: '../assets/pomodoro-rest2.png'
+      icon: new URL('@/assets/pomodoro-active.png', import.meta.url).href
     })
   }
   finish()
