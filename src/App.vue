@@ -3,14 +3,14 @@ v-app
   v-card
     v-navigation-drawer(ref="drawer" expand-on-hover rail permanent width="200" rail-width="70" )
       v-list
-        v-list-item(to="/")
-              v-list-item-title.text-h6 番茄鐘
+        v-list-item(to="/" variant="plain")
+              v-list-item-title.text-h5 番茄鐘
       v-divider
       v-list
-        v-list-item( prepend-icon="mdi-home" title="回到首頁" to="/")
-        v-list-item( prepend-icon="mdi-format-list-bulleted" title="待辦清單" to="/list")
-        v-list-item( prepend-icon="mdi-cog" title="設定" to="/settings")
-        v-list-item( :prepend-icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" :title="notify ?'關閉通知':'開啟通知'" @click="toggleNotify")
+        v-list-item.items( prepend-icon="mdi-home" title="回到首頁" to="/")
+        v-list-item.items( prepend-icon="mdi-format-list-bulleted" title="待辦清單" to="/list")
+        v-list-item.items( prepend-icon="mdi-cog" title="設定" to="/settings")
+        v-list-item.items( :prepend-icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" :title="notify ?'關閉通知':'開啟通知'" @click="toggleNotify")
 
   //- v-app-bar
   //-   v-app-bar-title 番茄鐘

@@ -20,16 +20,16 @@ $secondarycolor:#2C3E2C;
   cursor: pointer;
 
   .v-list-item{
-    display: flex;
+    .v-list-item-title{
+      font-weight: 900;
+    } 
+  } 
+  .items{
     &:hover{
       background:darken($primarycolor ,10%);
       color:lighten($secondarycolor,10%)
     }
-
-    .v-list-item-title{
-      font-weight: 900;
-    } 
-  }  
+  } 
 
 }
 .v-main{
