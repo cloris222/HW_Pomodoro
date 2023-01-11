@@ -19,6 +19,11 @@ $secondarycolor:#2C3E2C;
   color:$secondarycolor;
   cursor: pointer;
 
+  .plain-title{
+    opacity: 1;
+    height: 100%;
+  }
+
   .v-list-item{
     .v-list-item-title{
       font-weight: 900;

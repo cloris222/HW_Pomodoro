@@ -3,7 +3,7 @@ v-app
   v-card
     v-navigation-drawer(ref="drawer" expand-on-hover rail permanent width="200" rail-width="70" )
       v-list
-        v-list-item(to="/" variant="plain")
+        v-list-item.plain-title(to="/" variant="plain")
               v-list-item-title.text-h5 番茄鐘
       v-divider
       v-list
