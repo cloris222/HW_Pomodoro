@@ -110,7 +110,16 @@ $secondarycolor:#2C3E2C;
       color:$secondarycolor ;
       transform: scale(1.2);
     }
-  } 
+  }
+  
+  .col-1{
+    height: 100vh;
+  }
+
+  .col-2{
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 // SettingsView.vue

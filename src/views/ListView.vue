@@ -1,6 +1,6 @@
 <template lang="pug">
-v-row#list.mt-8.ml-150
-  v-col(cols="5")
+v-row#list.ml-150.mt-8
+  v-col(cols="5").col-1
     h1.text-center.mb-4 待辦事項
     v-divider.mb-8(color="#D7C4BB")
     v-text-field(ref="input" v-model="newItem" label="新增事項" :rules="[rules.required, rules.length]" @keydown.enter="onInputSubmit")
@@ -44,7 +44,7 @@ v-row#list.mt-8.ml-150
       //-       span(v-else)
       //-         v-btn(icon="mdi-pencil" variant="text" color="green" @click="editItem(item.id)")
       //-         v-btn(icon="mdi-delete" variant="text" color="red" @click="delItem(item.id)")
-  v-col(cols="5").mx-auto
+  v-col(cols="5").mx-auto.col-2
     h1.text-center.mb-4 已完成事項
     v-divider.mb-8(color="#D7C4BB")
     v-card(v-if="finishedItems.length === 0")
